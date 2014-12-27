@@ -38,6 +38,10 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
     if ($result===false) {
         auth_error(curl_error($ch));
     }
+
+    echo "</br></br> dumping var result </br>";
+    var_dump($result);
+
     curl_close($ch);
     $response=json_decode($result);
     $auth_token=$response->access_token;
@@ -57,6 +61,9 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
         auth_error(curl_error($ch));
     }
     curl_close($ch);
+
+    echo "</br></br> dumping var result </br>";
+    var_dump($result);
     $response=json_decode($result);
 
 
