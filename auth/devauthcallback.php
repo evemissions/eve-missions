@@ -14,7 +14,7 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
     //Do the initial check.
     $url='https://login.eveonline.com/oauth/token';
     $verify_url='https://login.eveonline.com/oauth/verify';
-    $header='Authorization: Basic '.base64_encode($clientid.':'.$secret);
+    $header='Authorization: Bearer '.base64_encode($clientid.':'.$secret);
     $fields_string='';
     $fields=array(
                 'grant_type' => 'authorization_code',
