@@ -41,12 +41,6 @@
 		}
 	}
 
-	function connectToDB() {
-        $database = null;
-        $database = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
-        return $database;
-}
-
 	function insertData($sql, $data) {
         $statement = $sql->prepare("INSERT INTO missions(name, details, agent, reward, bonusDetails, bonusReward) VALUES (:title, :details, :agent, :reward, :bonus_details, :bonus_reward)");
 		$success = $statement->execute(array(
@@ -65,7 +59,7 @@
 			echo "FAILED to validate. Data missing from form<br />";
 		} else {
 
-			$mysql = connectToDB();
+			$mysql = $dbh;
 			if($mysql != null) {
 				insertData($mysql, $missiondata);
 			}
