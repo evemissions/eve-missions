@@ -12,8 +12,8 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
 
 
     //Do the initial check.
-    $url='https://login.testeveonline.com/oauth/token';
-    $verify_url='https://login.testeveonline.com/oauth/verify';
+    $url='https://login.eveonline.com/oauth/token';
+    $verify_url='https://login.eveonline.com/oauth/verify';
     $header='Authorization: Basic '.base64_encode($clientid.':'.$secret);
     $fields_string='';
     $fields=array(
