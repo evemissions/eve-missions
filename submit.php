@@ -1,9 +1,10 @@
 
 <?php
+    ini_set('display_errors', 1);
+    error_reporting(-1);
     include("db.php");
-	// UGLY PROTOTYPE 
+    // UGLY PROTOTYPE 
 	$mysql = null;
-    
 
 	class MissionData {
 		public $title;
@@ -42,8 +43,7 @@
 
 	function connectToDB() {
         $database = null;
-        $database = new PDO('mysql:host=DB_HOST;dbname=DB_NAME;charset=utf8', 'DB_USER', 'DB_PASS');
-        echo "this part worked";
+        $database = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
         return $database;
 }
 
