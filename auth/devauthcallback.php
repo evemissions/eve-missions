@@ -3,7 +3,7 @@ require_once('auth_functions.php');
 require_once('secret.php');
 session_start();
 
-$useragent="Fuzzwork Auth agent.";
+$useragent="Eve Missions Auth Agent";
 
 // Make sure that the secret matches the one set before the redirect.
 if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth_state']==$_GET['state']) {
@@ -12,8 +12,8 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
 
 
     //Do the initial check.
-    $url='https://sisilogin.testeveonline.com/oauth/token';
-    $verify_url='https://sisilogin.testeveonline.com/oauth/verify';
+    $url='https://login.testeveonline.com/oauth/token';
+    $verify_url='https://login.testeveonline.com/oauth/verify';
     $header='Authorization: Basic '.base64_encode($clientid.':'.$secret);
     $fields_string='';
     $fields=array(
