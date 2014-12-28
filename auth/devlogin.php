@@ -19,7 +19,7 @@ if (isset($_SESSION['auth_characterid'])) {
         $redirecturl=$matches[1];
     }
 
-    $redirect_to="https://test.eve-missions.com".$redirecturl;
+    $redirect_to="https://test.eve-missions.com/".$redirecturl;
     $_SESSION['auth_state']=$state;
     $_SESSION['auth_redirect']=$redirect_to;
     session_write_close();

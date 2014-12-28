@@ -1,5 +1,6 @@
 <?php
     session_start();
+    var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +34,14 @@
                 alert("Reward must be filled out");
                 return false;
             }
+            <?php if(!isset($_SESSION[auth_charactername])) {
+                echo "alert(\"You must be logged on to submit missions!\");";
+            } ?>
         }
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>EVE Missions</title>
+    <title>Submit Mission</title>
 </head>
 
 <body>
@@ -62,7 +66,7 @@
                     <li>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/list.html">All</a>
+                            <li><a href="/list.php">All</a>
                             </li>
                             <li><a href="#">Top Viewed</a>
                             </li>
@@ -90,10 +94,10 @@
                         </li>";
                     } else {
                         echo "<li>
-                            <a href='profile.html'>";
+                            <a href='profile.php'>";
                         echo $_SESSION['auth_charactername'];
                         echo "</a></li>
-                            <li><a href='/auth/logout.php'>Logout</a>
+                            <li><a href='/auth/logout.php'>(Logout)</a>
                         </li>";
                     } ?>
                 </ul>
@@ -115,7 +119,7 @@
                     <br>
                     <label>Who to Contact *</label>
                     <br/>
-                    <input style="width: 100%" type="text" name="agent" />
+                    <input style="width: 100%" value="<?php echo $_SESSION[auth_charactername]; ?>" type="text" name="agent" readonly="true" />
                     <br />
                 </div>
                 <div class="col-md-4">

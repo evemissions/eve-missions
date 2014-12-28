@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>EVE Missions</title>
+    <title>Mission List</title>
 </head>
 
 <body>
@@ -34,12 +34,12 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a>
+                    <li><a href="/">Home</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/list.php">All</a>
+                            <li class="active"><a href="/list.php">All</a>
                             </li>
                             <li><a href="#">Top Viewed</a>
                             </li>
@@ -77,11 +77,22 @@
         </div>
     </nav>
     <div class="container-fluid jumbotron text-center">
-        <h1>eve missions</h1>
-        <p style="font-family:lato">Player-created missions with ISK rewards</p>
+        <h1>miSSiOn liST</h1>
+        <p style="font-family:lato">Here you can select your desired missions!</p>
     </div>
     <div class="container">
-        <p>We're still working on the site, please check <a href="http://www.reddit.com/r/evemissions">the subreddit</a> for news and updates. If you are interested in helping out for free, please fill out <a href="http://goo.gl/forms/lbtmOQA2JQ">the form</a>. In addition, if you wish to help out the site for free, please join the IRC channel <b>##evemissions</b> at <a href="http://webchat.freenode.net">Freenode</a>. I hope to see you all soon!</p>
+        <div class="row">
+            <div class="col-md-3" style="border: 2px solid #0099CC; border-radius: 7px">
+                <input type="text" style="width: 100%; border: none" name="search" value="Search" />
+            </div>
+            <div class="col-md-8" style="border: 3px solid black; border-radius: 10px">
+                <ul>
+                    <?php
+                        $array = $mysqli_fetch_row($query);
+                    ?>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="modal fade" id="help" role="dialog">
         <div class="modal-dialog">
