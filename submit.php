@@ -39,7 +39,7 @@
     <title>Submit Mission</title>
 </head>
 
-<body>
+<body onload="setInterval(function(){$.post('/refresh_session.php');},270);">
     <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
