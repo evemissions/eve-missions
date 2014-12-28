@@ -18,11 +18,6 @@
                 alert("Title must be filled out");
                 return false;
             }
-            x = document.forms["submitform"]["agent"].value;
-            if (x == null || x == "") {
-                alert("Name must be filled out");
-                return false;
-            }
             x = document.forms["submitform"]["details"].value;
             if (x == null || x == "") {
                 alert("Details must be filled out");
@@ -35,6 +30,7 @@
             }
             <?php if(!isset($_SESSION[auth_charactername])) {
                 echo "alert(\"You must be logged on to submit missions!\");";
+                echo "return false;";
             } ?>
         }
     </script>
@@ -87,8 +83,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(!isset($_SESSION['auth_charactername'])) {
                         echo "<li>
-                            <a href='https://test.eve-missions.com/auth/devlogin.php'>
-                                <img src='https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45'>
+                            <a href='/login.php'>Login/Register
                             </a>
                         </li>";
                     } else {
@@ -103,7 +98,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid jumbotron text-center">
+    <div style="background: url(/img/eve_opt.jpg); !important" class="container-fluid jumbotron text-center">
         <h1>submit a mission</h1>
         <p style="font-family:Lato">Submit custom missions to the EVE Missions database</p>
     </div>
@@ -118,7 +113,7 @@
                     <br>
                     <label>Who to Contact *</label>
                     <br/>
-                    <input style="width: 100%" value="<?php echo $_SESSION[auth_charactername]; ?>" type="text" name="agent" readonly="true" />
+                    <input style="width: 100%; background-color: grey" value="<?php echo $_SESSION[auth_charactername]; ?>" type="text" name="agent" readonly="true" />
                     <br />
                 </div>
                 <div class="col-md-4">

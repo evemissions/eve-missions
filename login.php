@@ -12,6 +12,29 @@
     <link href="/css/style.css?v=1.50" rel="stylesheet" />
     <link href="/css/style.css?v=1.47" rel="stylesheet" />
     <meta charset="utf-8">
+    <script>
+        function validate() {
+            var x = document.forms["submitform"]["title"].value;
+            if (x == null || x == "") {
+                alert("Title must be filled out");
+                return false;
+            }
+            x = document.forms["submitform"]["details"].value;
+            if (x == null || x == "") {
+                alert("Details must be filled out");
+                return false;
+            }
+            x = document.forms["submitform"]["reward"].value;
+            if (x == null || x == "") {
+                alert("Reward must be filled out");
+                return false;
+            }
+            <?php if(!isset($_SESSION[auth_charactername])) {
+                echo "alert(\"You must be logged on to submit missions!\");";
+                echo "return false;";
+            } ?>
+        }
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>EVE Missions</title>
@@ -34,7 +57,7 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a>
+                    <li><a href="/">Home</a>
                     </li>
                     <li>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
@@ -59,7 +82,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(!isset($_SESSION['auth_charactername'])) {
-                        echo "<li>
+                        echo "<li class='active'>
                             <a href='/login.php'>Login/Register
                             </a>
                         </li>";
@@ -75,12 +98,19 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid jumbotron text-center">
-        <h1>eve missions</h1>
-        <p style="font-family:lato">Player-created missions with ISK rewards</p>
-    </div>
     <div class="container">
-        <p>We're still working on the site, please check <a href="http://www.reddit.com/r/evemissions">the subreddit</a> for news and updates. If you are interested in helping out for free, please fill out <a href="http://goo.gl/forms/lbtmOQA2JQ">the form</a>. In addition, if you wish to help out the site for free, please join the IRC channel <b>##evemissions</b> at <a href="http://webchat.freenode.net">Freenode</a>. I hope to see you all soon!</p>
+        <div class="row" style="text-align: center">
+            <div class="col-md-6" style="border: 2px solid green; border-radius: 10px">
+                <p>Login</p>
+                <form name="login" action="login_submit.php" method="post" onsubmit="return validate();">
+            
+            </div>
+            <div class="col-md-6" style="border: 2px solid red; border-radius: 10px">
+                <p>Register</p>
+            
+            
+            </div>
+        </div>
     </div>
     <div class="modal fade" id="help" role="dialog">
         <div class="modal-dialog">
