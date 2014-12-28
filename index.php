@@ -9,8 +9,7 @@
     <meta name="google-site-verification" content="Z-sBx9d3kgXBU00XEDE6krv3-hik_uNqF2-amWunO3M" />
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
-    <link href="/css/style.css?v=1.50" rel="stylesheet" />
-    <link href="/css/style.css?v=1.47" rel="stylesheet" />
+    <link href="/css/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -60,7 +59,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(!isset($_SESSION['auth_charactername'])) {
                         echo "<li>
-                            <a href='/login.php'>Login/Register
+                            <a href='/auth/devlogin.php'><img src=\"/img/sso.png\">
                             </a>
                         </li>";
                     } else {
