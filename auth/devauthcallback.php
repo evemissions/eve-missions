@@ -34,14 +34,12 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
     $result = curl_exec($ch);
-
     if ($result===false) {
         auth_error(curl_error($ch));
     }
 
     echo "</br></br> dumping var result </br>";
     var_dump($result);
-
     curl_close($ch);
     $response=json_decode($result);
     $auth_token=$response->access_token;

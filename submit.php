@@ -1,72 +1,169 @@
-
 <?php
-    ini_set('display_errors', 1);
-    error_reporting(-1);
-    include("db.php");
-    // UGLY PROTOTYPE 
-	$mysql = null;
-
-	class MissionData {
-		public $title;
-		public $agent;
-		public $details;
-		public $reward;
-		public $bonus_details;
-		public $bonus_reward;
-
-		private $_requiredFields = array(
-				'title',
-				'agent',
-				'details',
-				'reward'
-			);
-
-		public function build($POST) {
-
-			// Make sure each field is valid
-			foreach($this->_requiredFields as $key) {
-				if(!isset($POST[$key]) /*&& !empty($POST[$key])*/) {
-					return false;
-				}
-			}
-
-			$this->title = htmlspecialchars($POST['title']);
-			$this->agent = htmlspecialchars($POST['agent']);
-			$this->details = htmlspecialchars($POST['details']);
-			$this->reward = htmlspecialchars($POST['reward']);
-			$this->bonus_details = htmlspecialchars($POST['bonusdetails']);
-			$this->bonus_reward = htmlspecialchars($POST['bonusreward']);
-
-			return true;
-		}
-	}
-
-	function insertData($sql, $data) {
-        $statement = $sql->prepare("INSERT INTO missions(name, details, agent, reward, bonusDetails, bonusReward) VALUES (:title, :details, :agent, :reward, :bonus_details, :bonus_reward)");
-		$success = $statement->execute(array(
-				"title" => $data->title, 
-				"agent" => $data->agent,
-				"details" => $data->details,
-				"reward" => $data->reward,
-				"bonus_details" => $data->bonus_details,
-				"bonus_reward" => $data->bonus_reward));
-	}
-
-	if($_POST) {
-		$missiondata =  new MissionData();
-
-		if(!$missiondata->build($_POST)) {
-			echo "FAILED to validate. Data missing from form<br />";
-		} else {
-
-			$mysql = $dbh;
-			if($mysql != null) {
-				insertData($mysql, $missiondata);
-			}
-
-
-		}
-        
-	}
-    header("Location: submit.html"); 
+    session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/img/favicon.ico?v=2">
+    <meta name="google-site-verification" content="Z-sBx9d3kgXBU00XEDE6krv3-hik_uNqF2-amWunO3M" />
+    <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
+    <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
+    <link href="/css/style.css?v=1.50" rel="stylesheet" />
+    <meta charset="utf-8">
+    <script>
+        function validate() {
+            var x = document.forms["submitform"]["title"].value;
+            if (x == null || x == "") {
+                alert("Title must be filled out");
+                return false;
+            }
+            x = document.forms["submitform"]["agent"].value;
+            if (x == null || x == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            x = document.forms["submitform"]["details"].value;
+            if (x == null || x == "") {
+                alert("Details must be filled out");
+                return false;
+            }
+            x = document.forms["submitform"]["reward"].value;
+            if (x == null || x == "") {
+                alert("Reward must be filled out");
+                return false;
+            }
+        }
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>EVE Missions</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/">
+                    <!--<img src="/img/EM_logo.png?v=1.1" style="width: 50px; height: auto; float: left; margin-right: 9px; margin-top: 35px;">-->
+                </a>
+                <a href="/" class="navbar-brand">eve missions</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/list.html">All</a>
+                            </li>
+                            <li><a href="#">Top Viewed</a>
+                            </li>
+                            <li><a href="#">Top Rated</a>
+                            </li>
+                            <li><a href="#">Newest</a>
+                            </li>
+                            <li><a href="#">Staff Picks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="/submit.php">Submit a Mission</a>
+                    </li>
+                    <li><a href="#help" data-toggle="modal">Help</a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <?php if(!isset($_SESSION['auth_charactername'])) {
+                        echo "<li>
+                            <a href='https://test.eve-missions.com/auth/devlogin.php'>
+                                <img src='https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45'>
+                            </a>
+                        </li>";
+                    } else {
+                        echo "<li>
+                            <a href='profile.html'>";
+                        echo $_SESSION['auth_charactername'];
+                        echo "</a></li>
+                            <li><a href='/auth/logout.php'>Logout</a>
+                        </li>";
+                    } ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid jumbotron text-center">
+        <h1>submit a mission</h1>
+        <p style="font-family:Lato">Submit custom missions to the EVE Missions database</p>
+    </div>
+    <div class="container">
+        <form name="submitform" action="form_submit.php" method="post" onsubmit="return validate();">
+            <div class="row" style="text-align: center">
+                <div class="col-md-4">
+                    <label>Mission Title *</label>
+                    <br>
+                    <input style="width: 100%" type="text" name="title" />
+                    <br>
+                    <br>
+                    <label>Who to Contact *</label>
+                    <br/>
+                    <input style="width: 100%" type="text" name="agent" />
+                    <br />
+                </div>
+                <div class="col-md-4">
+                    <label>Mission Details *</label>
+                    <br />
+                    <textarea style="font-size:14px; width: 100%" name="details"></textarea>
+                    <br />
+                    <label>Mission Rewards *</label>
+                    <br />
+                    <textarea style="font-size:14px; width: 100%" name="reward"></textarea>
+                    <br />
+                </div>
+                <div class="col-md-4">
+                    <label>Bonus Details</label>
+                    <br />
+                    <textarea style="font-size:14px; width: 100%" name="bonusdetails"></textarea>
+                    <br />
+
+                    <label>Bonus Rewards</label>
+                    <br />
+                    <textarea style="width: 100%" type="text" name="bonusreward" /></textarea>
+                    <br />
+                </div>
+            </div>
+            <br>
+            <div style="text-align: center">
+                <input type="submit" />
+                <input type="hidden" name="response" value="submit" />
+            </div>
+        </form>
+    </div>
+    <div class="modal fade" id="help" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Help!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>WIP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

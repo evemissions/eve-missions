@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,31 +10,8 @@
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
     <link href="/css/style.css?v=1.50" rel="stylesheet" />
+    <link href="/css/style.css?v=1.47" rel="stylesheet" />
     <meta charset="utf-8">
-    <script>
-        function validate() {
-            var x = document.forms["submitform"]["title"].value;
-            if (x == null || x == "") {
-                alert("Title must be filled out");
-                return false;
-            }
-            x = document.forms["submitform"]["agent"].value;
-            if (x == null || x == "") {
-                alert("Name must be filled out");
-                return false;
-            }
-            x = document.forms["submitform"]["details"].value;
-            if (x == null || x == "") {
-                alert("Details must be filled out");
-                return false;
-            }
-            x = document.forms["submitform"]["reward"].value;
-            if (x == null || x == "") {
-                alert("Reward must be filled out");
-                return false;
-            }
-        }
-    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>EVE Missions</title>
@@ -54,7 +34,7 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a>
+                    <li class="active"><a href="/">Home</a>
                     </li>
                     <li>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
@@ -71,66 +51,37 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
-                        <a href="/submit.html">Submit a Mission</a>
+                    <li>
+                        <a href="/submit.php">Submit a Mission</a>
                     </li>
                     <li><a href="#help" data-toggle="modal">Help</a>
                     </li>
-
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="https://login.eveonline.com/oauth/authorize/?response_type=code&redirect_uri=https://test.eve-missions.com/auth/devauthcallback.php&client_id=ea09a57ef06543fea25d389a07d0c4f4&scope=&state=evemissions"><img src="https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45"></a>
-                    </li>
+                    <?php if(!isset($_SESSION['auth_charactername'])) {
+                        echo "<li>
+                            <a href='https://test.eve-missions.com/auth/devlogin.php'>
+                                <img src='https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45'>
+                            </a>
+                        </li>";
+                    } else {
+                        echo "<li>
+                            <a href='profile.html'>";
+                        echo $_SESSION['auth_charactername'];
+                        echo "</a></li>
+                            <li><a href='/auth/logout.php'>Logout</a>
+                        </li>";
+                    } ?>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container-fluid jumbotron text-center">
-        <h1>submit a mission</h1>
-        <p style="font-family:Lato">Submit custom missions to the EVE Missions database</p>
+        <h1>eve missions</h1>
+        <p style="font-family:lato">Player-created missions with ISK rewards</p>
     </div>
     <div class="container">
-        <form name="submitform" action="submit.php" method="post" onsubmit="return validate();">
-            <div class="row" style="text-align: center">
-                <div class="col-md-4">
-                    <label>Mission Title *</label>
-                    <br>
-                    <input style="width: 100%" type="text" name="title" />
-                    <br>
-                    <br>
-                    <label>Who to Contact *</label>
-                    <br/>
-                    <input style="width: 100%" type="text" name="agent" />
-                    <br />
-                </div>
-                <div class="col-md-4">
-                    <label>Mission Details *</label>
-                    <br />
-                    <textarea style="font-size:14px; width: 100%" name="details"></textarea>
-                    <br />
-                    <label>Mission Rewards *</label>
-                    <br />
-                    <textarea style="font-size:14px; width: 100%" name="reward"></textarea>
-                    <br />
-                </div>
-                <div class="col-md-4">
-                    <label>Bonus Details</label>
-                    <br />
-                    <textarea style="font-size:14px; width: 100%" name="bonusdetails"></textarea>
-                    <br />
-
-                    <label>Bonus Rewards</label>
-                    <br />
-                    <textarea style="width: 100%" type="text" name="bonusreward" /></textarea>
-                    <br />
-                </div>
-            </div>
-            <br>
-            <div style="text-align: center">
-                <input type="submit" />
-                <input type="hidden" name="response" value="submit" />
-            </div>
-        </form>
+        <p>We're still working on the site, please check <a href="http://www.reddit.com/r/evemissions">the subreddit</a> for news and updates. If you are interested in helping out for free, please fill out <a href="http://goo.gl/forms/lbtmOQA2JQ">the form</a>. In addition, if you wish to help out the site for free, please join the IRC channel <b>##evemissions</b> at <a href="http://webchat.freenode.net">Freenode</a>. I hope to see you all soon!</p>
     </div>
     <div class="modal fade" id="help" role="dialog">
         <div class="modal-dialog">
