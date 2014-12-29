@@ -53,7 +53,7 @@
                     <li>
                         <a href="/submit.php">Submit a Mission</a>
                     </li>
-                    <li><a href="#help" data-toggle="modal">Help</a>
+                    <li><a href="#about" data-toggle="modal">About</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -81,14 +81,14 @@
     <div class="container">
         <p>We're still working on the site, please check <a href="http://www.reddit.com/r/evemissions">the subreddit</a> for news and updates. If you are interested in helping out for free, please fill out <a href="http://goo.gl/forms/lbtmOQA2JQ">the form</a>. In addition, if you wish to help out the site for free, please join the IRC channel <b>##evemissions</b> at <a href="http://webchat.freenode.net">Freenode</a>. I hope to see you all soon!</p>
     </div>
-    <div class="modal fade" id="help" role="dialog">
+    <div class="modal fade" id="about" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Help!</h4>
+                    <h4>About EVE Missions</h4>
                 </div>
                 <div class="modal-body">
-                    <p>WIP</p>
+                    <p>EVE Missions is a site that provides player-created missions for EVE players to do to learn more about the game.</p>
                 </div>
             </div>
         </div>
