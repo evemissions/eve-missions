@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>EVE Missions</title>
+    <title>EVE-Missions</title>
     <meta name="description" content="Player-created missions with ISK rewards">
 </head>
 
@@ -30,7 +30,7 @@
                 <a href="/">
                     <!--<img src="/img/EM_logo.png?v=1.1" style="width: 50px; height: auto; float: left; margin-right: 9px; margin-top: 35px;">-->
                 </a>
-                <a href="/" class="navbar-brand">eve missions</a>
+                <a href="/" class="navbar-brand">eve-missions</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -76,7 +76,7 @@
         </div>
     </nav>
     <div class="container-fluid jumbotron text-center">
-        <h1>eve missions</h1>
+        <h1>eve-missions</h1>
         <p style="font-family:lato">Player-created missions with ISK rewards</p>
     </div>
     <div class="container">
@@ -86,10 +86,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>About EVE Missions</h4>
+                    <h4>About Eve-Missions</h4>
                 </div>
                 <div class="modal-body">
-                    <p>EVE Missions is a site that provides player-created missions for EVE players to do to learn more about the game.</p>
+                    <p>EVE-Missions provides player-created missions for EVE players to do to learn more about the game.</p>
 
                     <div><h5> The Team </h5></div>
                     <div><table style="text-align:center">

@@ -31,7 +31,7 @@
                 <a href="/">
                     <!--<img src="/img/EM_logo.png?v=1.1" style="width: 50px; height: auto; float: left; margin-right: 9px; margin-top: 35px;">-->
                 </a>
-                <a href="/" class="navbar-brand">eve missions</a>
+                <a href="/" class="navbar-brand">eve-missions</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -111,10 +111,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>About EVE Missions</h4>
+                    <h4>About EVE-Missions</h4>
                 </div>
                 <div class="modal-body">
-                    <p>EVE Missions is a site that provides player-created missions for EVE players to do to learn more about the game.</p>
+                    <p>EVE-Missions provides player-created missions for EVE players to do to learn more about the game.</p>
 
                     <div><h5> The Team </h5></div>
                     <div><table style="text-align:center">
