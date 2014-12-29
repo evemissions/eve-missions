@@ -84,26 +84,35 @@
         <div class="row">
             <div class="col-md-3" style="">
                 <div>
-                    <img  style="float:left;padding-right:10px;" src="https://image.eveonline.com/Character/90792652_64.jpg"/>
-                    <b>Vampire Huunuras</b>
-                    <p>Trusted Submitter</p>
-                </div>
-                <div>
-                    <h4><u>Actions</u></h4>
-                    <p> Accept Mission</p>
-                    <p> Complete Mission</p>
-                    <p> Fail Mission</p>
-                    <p> Contact the mission owner</p>
-                </div>
-            </div>
-            <div class="col-md-8" style="">
-                <div>
-                    <h4>Trying out D-Scan</h4>
-                    <p>Objective:</p>
-                    <p>Reward: </p>
-                    <p>Bonus: </p>
-                    <p>Mission Details:</p>
-                    <p>Bonus Details:</p>
+                    <?php
+                    $id_get = $_GET['id'];
+                    $query = "SELECT * FROM missions WHERE ID ='$id_get'";
+                    $result = $db_connection->query($query);
+                        while($row = mysqli_fetch_array($result)) {
+                            echo '<img  style="float:left;padding-right:10px;" src="https://image.eveonline.com/Character/90792652_64.jpg"/>';
+
+                            echo "<b>" . $row['agent'] . "</b>";
+                            echo "<p>Trusted Submitter</p>";
+                            echo "</div>";
+                            echo "<div>
+                                <h4><u>Actions</u></h4>
+                                <p> Accept Mission</p>
+                                <p> Complete Mission</p>
+                                <p> Fail Mission</p>
+                                <p> Contact the mission owner</p>
+                            </div>";
+                            echo "</div>
+                            <div class='col-md-8' style=''>
+                                <div>";
+
+                            echo "<h4>" . $row['name'] . "</h4>";
+                            # no field for this in the database echo "<p>Objective:</p>";
+                            echo "<p>Reward:" . $row['reward'] . " </p>";
+                            echo "<p>Bonus:" . $row['bonusReward'] . " </p>";
+                            echo "<p>Mission Details:" . nl2br($row['details']) . "</p>";
+                            echo "<p>Bonus Details:" . nl2br($row['bonusDetails']) . "</p>";
+                        }
+                    ?>
 
                 </div>
             </div>
