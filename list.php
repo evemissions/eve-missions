@@ -75,7 +75,7 @@
         </div>
     </nav>
     <div class="container-fluid jumbotron text-center">
-        <h1>miSSiOn liST</h1>
+        <h1>Mission List</h1>
         <p style="font-family:lato">Here you can select your desired missions!</p>
     </div>
     <div class="container">
@@ -83,10 +83,26 @@
             <div class="col-md-3" style="border: 2px solid #0099CC; border-radius: 7px">
                 <input type="text" style="width: 100%; border: none" name="search" value="Search" />
             </div>
-            <div class="col-md-8" style="border: 3px solid black; border-radius: 10px">
+            <div class="col-md-8" style="border:1px solid black; border-radius: 1px">
                 <ul>
                     <?php
+                        require_once("db.php");
+                        db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                        //Temp query
+                        $query = "SELECT * FROM missions";
+                        $result = db_connection->query($query);
                         $array = $mysqli_fetch_row($query);
+                        echo '<table width="100%" class="table table-striped">';
+                        echo '<tr><th>Name</th><th>Agent</th><th>Reward</th><th>Date</th></tr>';
+                        while($row = mysqli_fetch_array($result)) {
+                            echo "<tr><a href=''>";
+                            echo "<td>" . $row['name']; . "</td>";
+                            echo "<td>" . $row['agent']; . "</td>";
+                            echo "<td>" . $row['reward']; . "</td>";
+                            echo "<td>" . $row['date']; . "</td>";
+                            echo "</a></tr>
+                        }
+                        echo '</table>';
                     ?>
                 </ul>
             </div>
