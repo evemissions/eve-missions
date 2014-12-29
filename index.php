@@ -64,10 +64,10 @@
                         </li>";
                     } else {
                         echo "<li>
-                            <a href='profile.php'>";
+                            <a style=\"padding-right: 0;\" href='profile.php'>";
                         echo $_SESSION['auth_charactername'];
-                        echo "</a></li>
-                            <li><a href='/auth/logout.php'>(Logout)</a>
+                        echo "&nbsp;&nbsp;<img src=\"https://image.eveonline.com/Character/" . $_SESSION['auth_characterid'] . "_64.jpg\"></a></li>" .
+                            "<li><a href='/auth/logout.php'>(Logout)</a>
                         </li>";
                     } ?>
                 </ul>
