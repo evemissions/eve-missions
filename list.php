@@ -76,7 +76,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid jumbotron text-center">
+    <div style="background: url(/img/list_opt.jpg); background-position: left" class="container-fluid jumbotron text-center">
         <h1>Mission List</h1>
         <p style="font-family:lato">Here you can select your desired missions!</p>
     </div>
@@ -85,7 +85,7 @@
             <div class="col-md-3" style="border: 2px solid #0099CC; border-radius: 7px">
                 <input type="text" style="width: 100%; border: none" name="search" value="Search" />
             </div>
-            <div class="col-md-8" style="">
+            <div class="col-md-8" style="border: 2px solid black; border-radius: 7px">
                 <ul>
                 <?php
                         //Temp query

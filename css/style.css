@@ -134,3 +134,7 @@ body {
 .heading {
     font-family: "eve_alphabold";
 }
+
+p {
+    font-size: 19px !important;
+}

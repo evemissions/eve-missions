@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>EVE Missions</title>
+    <meta name="description" content="Player-created missions with ISK rewards">
 </head>
 
 <body onload="setInterval(function(){$.post('/refresh_session.php');},270);">
