@@ -91,10 +91,14 @@
                     <p>EVE Missions is a site that provides player-created missions for EVE players to do to learn more about the game.</p>
 
                     <div><h5> The Team </h5></div>
-                    <div><table text-align="centre">
-                        <tr><td><a href="https://gate.eveonline.com/Profile/Marquis%20Otsito"><img src="https://image.eveonline.com/Character/95088894_64.jpg"/></a></td>
+                    <div><table style="text-align:center">
+                        <tr><td><a href="https://gate.eveonline.com/Profile/Marquis%20de%20Nardieu"><img src="https://image.eveonline.com/Character/95131473_64.jpg"/></a></td>
                         <td><a href="https://gate.eveonline.com/Profile/vampire%20Huunuras"><img src="https://image.eveonline.com/Character/90792652_64.jpg"/></a></td></tr>
-                        <tr><td>LittleGreenApple</td>
+                        <tr><td><b>Owner</b></td>&nbsp;&nbsp;
+                            <td><b>Head Developer</b></td>
+                        </tr>
+                        <tr>
+                            <td>GreenLittleApple</td>&nbsp;&nbsp;
                             <td>Vamps</td>
                         </tr></table></div>
 
