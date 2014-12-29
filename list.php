@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require_once("db.php");
+    $db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,23 +85,21 @@
             <div class="col-md-3" style="border: 2px solid #0099CC; border-radius: 7px">
                 <input type="text" style="width: 100%; border: none" name="search" value="Search" />
             </div>
-            <div class="col-md-8" style="border:1px solid black; border-radius: 1px">
+            <div class="col-md-8" style="">
                 <ul>
-                    <?php
-                        require_once("db.php");
-                        db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                <?php
                         //Temp query
                         $query = "SELECT * FROM missions";
-                        $result = db_connection->query($query);
+                        $result = $db_connection->query($query);
                         echo '<table width="100%" class="table table-striped">';
                         echo '<tr><th>Name</th><th>Agent</th><th>Reward</th><th>Date</th></tr>';
                         while($row = mysqli_fetch_array($result)) {
-                            echo "<tr><a href=''>";
-                            echo "<td>" . $row['name']; . "</td>";
-                            echo "<td>" . $row['agent']; . "</td>";
-                            echo "<td>" . $row['reward']; . "</td>";
-                            echo "<td>" . $row['date']; . "</td>";
-                            echo "</a></tr>
+                            echo "<tr>";
+                            echo "<td><a href='#?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
+                            echo "<td>" . $row['agent'] . "</td>";
+                            echo "<td>" . $row['reward'] . "</td>";
+                            echo "<td>" . $row['date'] . "</td>";
+                            echo "</tr>";
                         }
                         echo '</table>';
                     ?>

@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require_once("db.php");
+    $db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>EVE Missions</title>
+    <title>Mission</title>
 </head>
 
 <body onload="setInterval(function(){$.post('/refresh_session.php');},270);">
@@ -33,12 +35,12 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a>
+                    <li><a href="/">Home</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/list.php">All</a>
+                            <li class="active"><a href="/list.php">All</a>
                             </li>
                             <li><a href="#">Top Viewed</a>
                             </li>
@@ -75,11 +77,37 @@
         </div>
     </nav>
     <div class="container-fluid jumbotron text-center">
-        <h1>eve missions</h1>
-        <p style="font-family:lato">Player-created missions with ISK rewards</p>
+        <h1>Mission</h1>
+        <p style="font-family:lato">Here you can read up on your selected mission</p>
     </div>
     <div class="container">
-        <p>We're still working on the site, please check <a href="http://www.reddit.com/r/evemissions">the subreddit</a> for news and updates. If you are interested in helping out for free, please fill out <a href="http://goo.gl/forms/lbtmOQA2JQ">the form</a>. In addition, if you wish to help out the site for free, please join the IRC channel <b>##evemissions</b> at <a href="http://webchat.freenode.net">Freenode</a>. I hope to see you all soon!</p>
+        <div class="row">
+            <div class="col-md-3" style="">
+                <div>
+                    <img  style="float:left;padding-right:10px;" src="https://image.eveonline.com/Character/90792652_64.jpg"/>
+                    <b>Vampire Huunuras</b>
+                    <p>Trusted Submitter</p>
+                </div>
+                <div>
+                    <h4><u>Actions</u></h4>
+                    <p> Accept Mission</p>
+                    <p> Complete Mission</p>
+                    <p> Fail Mission</p>
+                    <p> Contact the mission owner</p>
+                </div>
+            </div>
+            <div class="col-md-8" style="">
+                <div>
+                    <h4>Trying out D-Scan</h4>
+                    <p>Objective:</p>
+                    <p>Reward: </p>
+                    <p>Bonus: </p>
+                    <p>Mission Details:</p>
+                    <p>Bonus Details:</p>
+
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal fade" id="about" role="dialog">
         <div class="modal-dialog">
@@ -89,15 +117,6 @@
                 </div>
                 <div class="modal-body">
                     <p>EVE Missions is a site that provides player-created missions for EVE players to do to learn more about the game.</p>
-
-                    <div><h5> The Team </h5></div>
-                    <div><table text-align="centre">
-                        <tr><td><a href="https://gate.eveonline.com/Profile/Marquis%20Otsito"><img src="https://image.eveonline.com/Character/95088894_64.jpg"/></a></td>
-                        <td><a href="https://gate.eveonline.com/Profile/vampire%20Huunuras"><img src="https://image.eveonline.com/Character/90792652_64.jpg"/></a></td></tr>
-                        <tr><td>LittleGreenApple</td>
-                            <td>Vamps</td>
-                        </tr></table></div>
-
                 </div>
             </div>
         </div>
