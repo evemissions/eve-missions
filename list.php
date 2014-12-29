@@ -91,7 +91,6 @@
                         //Temp query
                         $query = "SELECT * FROM missions";
                         $result = db_connection->query($query);
-                        $array = $mysqli_fetch_row($query);
                         echo '<table width="100%" class="table table-striped">';
                         echo '<tr><th>Name</th><th>Agent</th><th>Reward</th><th>Date</th></tr>';
                         while($row = mysqli_fetch_array($result)) {
