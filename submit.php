@@ -28,8 +28,8 @@
                 alert("Reward must be filled out");
                 return false;
             }
-            <?php if(!isset($_SESSION[auth_charactername])) {
-                echo "alert(\"You must be logged on to submit missions!\");";
+            <?php if(!($_SESSION[auth_charactername]==="Marquis Otsito" || $_SESSION[auth_charactername]==="Marquis de Aurilen" || $_SESSION[auth_charactername]==="Marquis de Nardieu")) {
+                echo "alert(\"Submitting missions is currently limited to the owner of the site.\");";
                 echo "return false;";
             } ?>
         }
@@ -88,10 +88,10 @@
                         </li>";
                     } else {
                         echo "<li>
-                            <a href='profile.php'>";
+                            <a style=\"padding-right: 0;\" href='profile.php'>";
                         echo $_SESSION['auth_charactername'];
-                        echo "</a></li>
-                            <li><a href='/auth/logout.php'>(Logout)</a>
+                        echo "&nbsp;&nbsp;<img src=\"https://image.eveonline.com/Character/" . $_SESSION['auth_characterid'] . "_64.jpg\"></a></li>" .
+                            "<li><a href='/auth/logout.php'>(Logout)</a>
                         </li>";
                     } ?>
                 </ul>
