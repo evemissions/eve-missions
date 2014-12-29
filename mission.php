@@ -89,7 +89,7 @@
                     $query = "SELECT * FROM missions WHERE ID ='$id_get'";
                     $result = $db_connection->query($query);
                         while($row = mysqli_fetch_array($result)) {
-                            echo '<img  style="float:left;padding-right:10px;" src="https://image.eveonline.com/Character/90792652_64.jpg"/>';
+                            echo '<img  style="float:left;padding-right:10px;" src="http://placehold.it/64x64"/>';
 
                             echo "<b>" . $row['agent'] . "</b>";
                             echo "<p>Trusted Submitter</p>";

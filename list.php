@@ -95,7 +95,7 @@
                         echo '<tr><th>Name</th><th>Agent</th><th>Reward</th><th>Date</th></tr>';
                         while($row = mysqli_fetch_array($result)) {
                             echo "<tr>";
-                            echo "<td><a href='#?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
+                            echo "<td><a href='mission.php?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
                             echo "<td>" . $row['agent'] . "</td>";
                             echo "<td>" . $row['reward'] . "</td>";
                             echo "<td>" . $row['date'] . "</td>";
