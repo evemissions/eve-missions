@@ -9,8 +9,9 @@
     <meta name="google-site-verification" content="Z-sBx9d3kgXBU00XEDE6krv3-hik_uNqF2-amWunO3M" />
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
-    <link href="/css/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet" />
+    <link href="/css/style.css?v=12.29.3.44" rel="stylesheet" />
     <meta charset="utf-8">
+    <?php include("heatmap.php"); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>EVE-Missions</title>
@@ -27,9 +28,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/">
-                    <!--<img src="/img/EM_logo.png?v=1.1" style="width: 50px; height: auto; float: left; margin-right: 9px; margin-top: 35px;">-->
-                </a>
                 <a href="/" class="navbar-brand">eve-missions</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
@@ -79,34 +77,15 @@
         <h1>eve-missions</h1>
         <p style="font-family:lato">Player-created missions with ISK rewards</p>
     </div>
-    <div class="container">
-        <p>We're still working on the site, please check <a href="http://www.reddit.com/r/evemissions">the subreddit</a> for news and updates. If you are interested in helping out for free, please fill out <a href="http://goo.gl/forms/lbtmOQA2JQ">the form</a>. In addition, if you wish to help out the site for free, please join the IRC channel <b>##evemissions</b> at <a href="http://webchat.freenode.net">Freenode</a>. I hope to see you all soon!</p>
+    <div class="container" style="text-align:center">
+        <h5>Welcome to EVE-Missions!</h5>
+        <p>EVE-Missions is a player-made website dedicated to offering beginners of the game EVE Online tasks, or missions, that help them learn more about the opportunities available to them. </p>
+        <h5>What is the purpose of EVE-Missions?</h5>
+        <p><b>Our philosophy</b> is that the fun, immersive things you do in EVE Online tend to make your wallet thinner, and boring things usually make it fatter. This deters new players who get stuck running missions in high sec or mining to earn ISK. There is a common misconception that new players are somehow unable to take part in compelling, emergent content - especially by themselves. By offering missions that pay new players to complete fun, "educational" tasks, they can better understand EVE Online in their early days without relying on mining and trying to earn ISK. New players who have never played a sandbox game tend to lack direction, so by providing them the clear-cut objectives and guidance they've come to expect from other modern games, they can have an easier time adjusting to life in New Eden!</p>
+        <h5>Great, how can I sign up?</h5>
+        <p>Just login through EVE Online's secure system on the top right and start accepting missions!</p>
     </div>
-    <div class="modal fade" id="about" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>About Eve-Missions</h4>
-                </div>
-                <div class="modal-body">
-                    <p>EVE-Missions provides player-created missions for EVE players to do to learn more about the game.</p>
-
-                    <div><h5> The Team </h5></div>
-                    <div><table style="text-align:center">
-                        <tr><td><a href="https://gate.eveonline.com/Profile/Marquis%20de%20Nardieu"><img src="https://image.eveonline.com/Character/95131473_64.jpg"/></a></td>
-                        <td><a href="https://gate.eveonline.com/Profile/vampire%20Huunuras"><img src="https://image.eveonline.com/Character/90792652_64.jpg"/></a></td></tr>
-                        <tr><td><b>Owner</b></td>&nbsp;&nbsp;
-                            <td><b>Head Developer</b></td>
-                        </tr>
-                        <tr>
-                            <td>GreenLittleApple</td>&nbsp;&nbsp;
-                            <td>Vamps</td>
-                        </tr></table></div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include("modal.php"); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

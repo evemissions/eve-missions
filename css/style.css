@@ -66,6 +66,7 @@ body {
 .dropdown-menu {
     margin-top: 7px !important;
     background-color: #fff !important;
+    box-shadow: -5px 5px 10px #888888;
 }
 .dropdown-menu > li > a {
     color: #000 !important;

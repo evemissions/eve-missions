@@ -11,8 +11,9 @@
     <meta name="google-site-verification" content="Z-sBx9d3kgXBU00XEDE6krv3-hik_uNqF2-amWunO3M" />
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
-    <link href="/css/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet" />
+    <link href="/css/style.css?v=12.29.3.44" rel="stylesheet" />
     <meta charset="utf-8">
+    <?php include("heatmap.php"); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Mission List</title>
@@ -28,9 +29,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/">
-                    <!--<img src="/img/EM_logo.png?v=1.1" style="width: 50px; height: auto; float: left; margin-right: 9px; margin-top: 35px;">-->
-                </a>
                 <a href="/" class="navbar-brand">eve-missions</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
@@ -107,31 +105,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="about" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>About EVE-Missions</h4>
-                </div>
-                <div class="modal-body">
-                    <p>EVE-Missions provides player-created missions for EVE players to do to learn more about the game.</p>
-
-                    <div><h5> The Team </h5></div>
-                    <div><table style="text-align:center">
-                        <tr><td><a href="https://gate.eveonline.com/Profile/Marquis%20de%20Nardieu"><img src="https://image.eveonline.com/Character/95131473_64.jpg"/></a></td>
-                        <td><a href="https://gate.eveonline.com/Profile/vampire%20Huunuras"><img src="https://image.eveonline.com/Character/90792652_64.jpg"/></a></td></tr>
-                        <tr><td><b>Owner</b></td>&nbsp;&nbsp;
-                            <td><b>Head Developer</b></td>
-                        </tr>
-                        <tr>
-                            <td>GreenLittleApple</td>&nbsp;&nbsp;
-                            <td>Vamps</td>
-                        </tr></table></div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include("modal.php"); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
