@@ -10,6 +10,7 @@
             public $agent;
             public $details;
             public $reward;
+            public $task;
             public $bonus_details;
             public $bonus_reward;
 
@@ -17,7 +18,8 @@
                     'title',
                     'agent',
                     'details',
-                    'reward'
+                    'reward',
+                    'task'
                 );
 
             public function build($POST) {
@@ -33,6 +35,7 @@
                 $this->agent = htmlspecialchars($POST['agent']);
                 $this->details = htmlspecialchars($POST['details']);
                 $this->reward = htmlspecialchars($POST['reward']);
+                $this->task = htmlspecialchars($POST['task']);
                 $this->bonus_details = htmlspecialchars($POST['bonusdetails']);
                 $this->bonus_reward = htmlspecialchars($POST['bonusreward']);
 
@@ -41,12 +44,13 @@
         }
 
         function insertData($sql, $data) {
-            $statement = $sql->prepare("INSERT INTO missions(name, details, agent, reward, bonusDetails, bonusReward) VALUES (:title, :details, :agent, :reward, :bonus_details, :bonus_reward)");
+            $statement = $sql->prepare("INSERT INTO missions(name, details, agent, reward, task,  bonusDetails, bonusReward) VALUES (:title, :details, :agent, :reward, :task, :bonus_details, :bonus_reward)");
             $success = $statement->execute(array(
                     "title" => $data->title, 
                     "agent" => $data->agent,
                     "details" => $data->details,
                     "reward" => $data->reward,
+                    "task" => $data->task,
                     "bonus_details" => $data->bonus_details,
                     "bonus_reward" => $data->bonus_reward));
         }

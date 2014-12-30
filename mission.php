@@ -14,6 +14,7 @@
     <link href="/css/style.css?v=12.29.3.44" rel="stylesheet" />
     <meta charset="utf-8">
     <?php include("heatmap.php"); ?>
+    <?php include("functions.php"); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Mission</title>
@@ -102,13 +103,14 @@
                             echo "</div>
                             <div class='col-md-8' style=''>
                                 <div>";
+                            $details = clickable($row['bonusDetails']);
 
                             echo "<h4>" . $row['name'] . "</h4>";
                             # no field for this in the database echo "<p>Objective:</p>";
                             echo "<p><b>Reward</b>: " . $row['reward'] . " </p>";
                             echo "<p><b>Bonus</b>: " . $row['bonusReward'] . " </p>";
                             echo "<p><b>Mission Details</b>: " . nl2br($row['details']) . "</p>";
-                            echo "<p><b>Additional Details</b>: " . nl2br($row['bonusDetails']) . "</p>";
+                            echo "<p><b>Additional Details</b>: " . nl2br($details) . "</p>";
                         }
                     ?>
 

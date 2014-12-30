@@ -10,8 +10,12 @@
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
     <?php include("heatmap.php"); ?>
+    <?php include("functions.php"); ?>
     <link href="/css/style.css?v=12.29.3.44" rel="stylesheet" />
     <meta charset="utf-8">
+    <script>
+    $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+    </script>
     <script>
         function validate() {
             var x = document.forms["submitform"]["title"].value;
@@ -22,6 +26,11 @@
             x = document.forms["submitform"]["details"].value;
             if (x == null || x == "") {
                 alert("Details must be filled out");
+                return false;
+            }
+            x = document.forms["submitform"]["task"].value;
+            if (x == null || x == "") {
+                alert("Task must be filled out");
                 return false;
             }
             x = document.forms["submitform"]["reward"].value;
@@ -119,24 +128,30 @@
                     <br />
                     <textarea style="font-size:14px; width: 100%" name="details"></textarea>
                     <br />
-                    <label>Mission Rewards *</label>
+                    <label>Task *</label>
+                    <br />
+                    <textarea style="font-size:14px; width: 100%" name="task"></textarea>
+                    <br />
+                    <label data-toggle="tooltip" data-original-title="Examples: 100, 100000, 100000000">Mission Rewards *</label>
                     <br />
                     <textarea style="font-size:14px; width: 100%" name="reward"></textarea>
                     <br />
                 </div>
                 <div class="col-md-4">
-                    <label>Bonus Details</label>
+                    <label data-toggle="tooltip" data-original-title="Add extra info here">Additional Details</label>
                     <br />
                     <textarea style="font-size:14px; width: 100%" name="bonusdetails"></textarea>
                     <br />
-
-                    <label>Bonus Rewards</label>
+                    <label data-toggle="tooltip" data-original-title="Add bonus details and reward">Bonus Details and Rewards</label>
                     <br />
-                    <textarea style="width: 100%" type="text" name="bonusreward" /></textarea>
+                    <textarea style="font-size:14px; width: 100%" type="text" name="bonusreward" /></textarea>
                     <br />
                 </div>
             </div>
             <br>
+            <div style="text-align: right">
+                <p style="color: red">* required field</p>
+            </div>
             <div style="text-align: center">
                 <input type="submit" />
                 <input type="hidden" name="response" value="submit" />
@@ -148,7 +163,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 </body>
 
 </html>

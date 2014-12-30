@@ -14,8 +14,8 @@
                     <table style="text-align:center">
                         <tr>
                             <td>
-                                <a href="https://gate.eveonline.com/Profile/Marquis%20de%20Nardieu">
-                                    <img src="https://image.eveonline.com/Character/95131473_64.jpg" />
+                                <a href="https://gate.eveonline.com/Profile/Marquis%20de%20Aurilen">
+                                    <img src="https://image.eveonline.com/Character/95127590_64.jpg" />
                                 </a>
                             </td>
                             <td>
