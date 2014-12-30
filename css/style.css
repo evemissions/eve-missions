@@ -138,4 +138,9 @@ body {
 
 p {
     font-size: 19px !important;
+    font-weight: 500 !important;
+}
+
+.spacing {
+    padding-right: 20px;
 }

@@ -11,3 +11,4 @@ db.php
 secret.php
 *.com
 *.old
+admin_submit.php
