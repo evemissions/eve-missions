@@ -5,11 +5,11 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="/img/favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="img/favicon.ico?v=12.30.10.25">
     <meta name="google-site-verification" content="Z-sBx9d3kgXBU00XEDE6krv3-hik_uNqF2-amWunO3M" />
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
-    <link href="/css/style.css?v=12.29.3.44" rel="stylesheet" />
+    <link href="/css/style.css?v=12.30.10.41" rel="stylesheet" />
     <meta charset="utf-8">
     <?php include("heatmap.php"); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

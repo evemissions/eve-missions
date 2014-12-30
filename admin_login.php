@@ -1,23 +1,21 @@
 <?php
     session_start();
-    require_once("db.php");
-    $db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="/img/favicon.ico?v=12.30.9.34">
+    <link rel="icon" type="image/png" href="img/favicon.ico?v=12.30.10.25">
     <meta name="google-site-verification" content="Z-sBx9d3kgXBU00XEDE6krv3-hik_uNqF2-amWunO3M" />
     <link href="/css/bootstrap.min.css?v=1" rel="stylesheet">
     <link href="/css/flat-ui.min.css?v=1.11" rel="stylesheet">
     <link href="/css/style.css?v=12.30.10.41" rel="stylesheet" />
     <meta charset="utf-8">
     <?php include("heatmap.php"); ?>
-    <?php include("functions.php"); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Mission</title>
+    <title>EVE-Missions</title>
+    <meta name="description" content="Player-created missions with ISK rewards">
 </head>
 
 <body onload="setInterval(function(){$.post('/refresh_session.php');},270);">
@@ -34,12 +32,12 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a>
+                    <li class="active"><a href="/">Home</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
                         <ul class="dropdown-menu">
-                            <li class="active"><a href="/list.php">All</a>
+                            <li><a href="/list.php">All</a>
                             </li>
                             <li><a href="#">Top Viewed</a>
                             </li>
@@ -76,52 +74,17 @@
         </div>
     </nav>
     <div class="container-fluid jumbotron text-center">
-        <h1>Mission</h1>
-        <p style="font-family:lato">Here you can read up on your selected mission</p>
+        <h1>admin-login</h1>
+        <p style="font-family:lato">You probably aren't supposed to be here...</p>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3" style="">
-                <div>
-                    <?php
-                    $id_get = $_GET['id'];
-                    $query = "SELECT * FROM missions WHERE ID ='$id_get'";
-                    $result = $db_connection->query($query);
-                        while($row = mysqli_fetch_array($result)) {
-                            echo '<img  style="float:left;padding-right:10px;" src="http://placehold.it/64x64"/>';
-
-                            echo "<b>" . $row['agent'] . "</b>";
-                            if ($row['isTrusted'] = true) {
-                                echo "<p style='color:blue;'>Trusted Submitter</p>";
-                            } else {
-                                echo "<p>Submitter</p>";
-                            }
-
-                            echo "</div>";
-                            echo "<div>
-                                <h4><u>Actions</u></h4>
-                                <a href='/Scripts/acceptMission.php?id=" . $row['id'] . "'>Accept Mission</a>
-                                <p> Complete Mission</p>
-                                <p> Fail Mission</p>
-                                <p> Contact the mission owner</p>
-                            </div>";
-                            echo "</div>
-                            <div class='col-md-8' style=''>
-                                <div>";
-                            $details = clickable($row['bonusDetails']);
-                            echo "<h4>" . $row['name'] . "</h4>";
-                            # no field for this in the database echo "<p>Objective:</p>";
-                            echo "<p><b>Reward</b>: " . $row['reward'] . " </p>";
-                            echo "<p><b>Bonus</b>: " . $row['bonusReward'] . " </p>";
-                            echo "<p><b>Mission Details</b>: " . nl2br($row['details']) . "</p>";
-                            echo "<p><b>Task</b>: " . nl2br($row['task']) . "</p>";
-                            echo "<p><b>Additional Details</b>: " . nl2br($details) . "</p>";
-                        }
-                    ?>
-
-                </div>
-            </div>
-        </div>
+    <div class="container" style="text-align:center">
+        <form name="adminform" action="admin_submit.php" method="post">
+            <label>Admin username</label><br/>
+            <input name="login" type="text"/><br/>
+            <label>Password</label><br/>
+            <input name="pass" type="password"/><br/>
+            <button name="act_login">Log In</button>
+        </form>
     </div>
     <?php include("modal.php"); ?>
 

@@ -13,26 +13,35 @@
                 <div>
                     <table style="text-align:center">
                         <tr>
-                            <td>
+                            <td class="spacing">
                                 <a href="https://gate.eveonline.com/Profile/Marquis%20de%20Aurilen">
                                     <img src="https://image.eveonline.com/Character/95127590_64.jpg" />
                                 </a>
                             </td>
-                            <td>
+                            <td class="spacing">
+                                <a href="https://gate.eveonline.com/Profile/Ohh_Yeah">
+                                    <img src="https://image.eveonline.com/Character/1055818779_64.jpg" />
+                                </a>
+                            </td>
+                            <td class="spacing">
                                 <a href="https://gate.eveonline.com/Profile/vampire%20Huunuras">
                                     <img src="https://image.eveonline.com/Character/90792652_64.jpg" />
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td><b>Owner</b>
-                            </td>&nbsp;&nbsp;
-                            <td><b>Head Developer</b>
+                            <td class="spacing"><b>Owner</b>
                             </td>
+                            <td class="spacing"><b>Co-Founder</b>
+                            </td>
+                            <td class="spacing"><b>Head Developer</b>
+                            </td>
+                            
                         </tr>
                         <tr>
-                            <td>GreenLittleApple</td>&nbsp;&nbsp;
-                            <td>Vamps</td>
+                            <td class="spacing">GreenLittleApple</td>
+                            <td class="spacing">Ohh Yeah</td>
+                            <td class="spacing">Vamps</td>
                         </tr>
                     </table>
                 </div>
