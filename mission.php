@@ -91,11 +91,16 @@
                             echo '<img  style="float:left;padding-right:10px;" src="http://placehold.it/64x64"/>';
 
                             echo "<b>" . $row['agent'] . "</b>";
-                            echo "<p>Trusted Submitter</p>";
+                            if ($row['isTrusted'] = true) {
+                                echo "<p style='color:blue;'>Trusted Submitter</p>";
+                            } else {
+                                echo "<p>Submitter</p>";
+                            }
+
                             echo "</div>";
                             echo "<div>
                                 <h4><u>Actions</u></h4>
-                                <p> Accept Mission</p>
+                                <a href='/Scripts/acceptMission.php?id=" . $row['id'] . "'>Accept Mission</a>
                                 <p> Complete Mission</p>
                                 <p> Fail Mission</p>
                                 <p> Contact the mission owner</p>
@@ -104,7 +109,6 @@
                             <div class='col-md-8' style=''>
                                 <div>";
                             $details = clickable($row['bonusDetails']);
-
                             echo "<h4>" . $row['name'] . "</h4>";
                             # no field for this in the database echo "<p>Objective:</p>";
                             echo "<p><b>Reward</b>: " . $row['reward'] . " </p>";
