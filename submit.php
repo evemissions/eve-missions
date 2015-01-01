@@ -38,7 +38,7 @@
                 alert("Reward must be filled out");
                 return false;
             }
-            <?php if(!($_SESSION[auth_charactername]==="Marquis Otsito" || $_SESSION[auth_charactername]==="Marquis de Aurilen" || $_SESSION[auth_charactername]==="Marquis de Nardieu")) {
+            <?php if(!($_SESSION[auth_charactername]==="EVE-Missions")) {
                 echo "alert(\"Submitting missions is currently limited to the owner of the site.\");";
                 echo "return false;";
             } ?>
