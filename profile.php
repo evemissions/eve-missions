@@ -118,10 +118,10 @@
                                         echo "<td>" . "Completed" . "</td>";
                                         break;
                                     case 2:
-                                        echo "<td>" . "Accepted" . "</td>";
+                                        echo "<td>" . "In Progress" . "</td>";
                                         break;
                                     case 3:
-                                        echo "<td>" . "In progress" . "</td>";
+                                        echo "<td>" . "Awaiting completion confirmation" . "</td>";
                                         break;
                                     case 4:
                                         echo "<td>" . "Failed" . "</td>";
