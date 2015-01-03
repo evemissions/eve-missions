@@ -12,3 +12,4 @@ secret.php
 *.com
 *.old
 admin_submit.php
+/refresh_session.php
