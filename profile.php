@@ -84,7 +84,7 @@
             <div class="col-md-3" style="">
                 <div>
                     <?php
-                            echo '<img src=\"https://image.eveonline.com/Character/' . $_SESSION['auth_characterid'] . '_64.jpg\">';
+                            echo '<img src="https://image.eveonline.com/Character/' . $_SESSION['auth_characterid'] . '_64.jpg\">';
                             echo "<b>" . $_SESSION['auth_charactername'] . "</b>";
                             echo "</div>";
                             echo "<div>
@@ -92,7 +92,7 @@
                             echo "</div>
                             <div class='col-md-8' style=''>";
                             echo "<h4><u>Current Missions</u></h4>";
-                            $charName = $_SESSION['charactername'];
+                            $charName = $_SESSION['auth_charactername'];
                             $pilotQuery = "SELECT * FROM user where character_name='$charName'";
                             $pilotRow = mysqli_fetch_array($db_connection->query($pilotQuery));
                             $journalQuery = "SELECT * FROM journal where pilotID='" . $pilotRow['id'] . "'";
