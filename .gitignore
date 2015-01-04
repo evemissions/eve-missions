@@ -13,3 +13,4 @@ secret.php
 *.old
 admin_submit.php
 refresh_session.php
+/refresh_session.php
