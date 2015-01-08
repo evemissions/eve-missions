@@ -17,7 +17,7 @@
     <?php include("functions.php"); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Mission</title>
+    <title>Profile</title>
 </head>
 
 <body onload="setInterval(function(){$.post('/refresh_session.php');},270);">
@@ -36,7 +36,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
                         <ul class="dropdown-menu">
                             <li class="active"><a href="/list.php">All</a>
@@ -59,12 +59,12 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(!isset($_SESSION['auth_charactername'])) {
-                        echo "<li>
+                        echo "<li class=\"active\">
                             <a href='/auth/devlogin.php'><img src=\"/img/sso.png\">
                             </a>
                         </li>";
                     } else {
-                        echo "<li>
+                        echo "<li class\"active\">
                             <a style=\"padding-right: 0;\" href='profile.php'>";
                         echo $_SESSION['auth_charactername'];
                         echo "&nbsp;&nbsp;<img src=\"https://image.eveonline.com/Character/" . $_SESSION['auth_characterid'] . "_64.jpg\"></a></li>" .
@@ -75,67 +75,58 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid jumbotron text-center">
-        <h1>Your Profile</h1>
-        <p style="font-family:lato">Here is your profile</p>
-    </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3" style="">
-                <div>
-                    <?php
-                            echo '<img src="https://image.eveonline.com/Character/' . $_SESSION['auth_characterid'] . '_64.jpg\">';
-                            echo "<b>" . $_SESSION['auth_charactername'] . "</b>";
-                            echo "</div>";
-                            echo "<div>
-                            </div>";
-                            echo "</div>
-                            <div class='col-md-8' style=''>";
-                            echo "<h4><u>Current Missions</u></h4>";
-                            $charName = $_SESSION['auth_charactername'];
-                            $pilotQuery = "SELECT * FROM user where character_name='$charName'";
-                            $pilotRow = mysqli_fetch_array($db_connection->query($pilotQuery));
-                            $journalQuery = "SELECT * FROM journal where pilotID='" . $pilotRow['id'] . "'";
-                            $journalResult = $db_connection->query($journalQuery);
+            <div style="text-align: center"><h3>My Profile</h3></div>
+            <div class="col-md-5" style="text-align: left">
+            <?php 
+                    echo '<img src="https://image.eveonline.com/Character/' . $_SESSION['auth_characterid'] . '_128.jpg\"></div>';
 
-                            echo '<table width="100%" class="table table-striped">';
-                            echo '<tr><th>Name</th><th>Agent</th><th>Reward</th><th>Status</th></tr>';
-                            while ($journalRow = mysqli_fetch_array($journalResult)) {
-                                #Setup for each row
-                                $missionQuery = "SELECT * FROM missions WHERE id='" . $journalRow['missionID'] . "'";
-                                $missionRow = mysqli_fetch_array($db_connection->query($missionQuery));
+                    echo "
+                    <div class='col-md-8'>";
+                    echo "<h4><u>Current Missions</u></h4>";
+                    $charName = $_SESSION['auth_charactername'];
+                    $pilotQuery = "SELECT * FROM user where character_name='$charName'";
+                    $pilotRow = mysqli_fetch_array($db_connection->query($pilotQuery));
+                    $journalQuery = "SELECT * FROM journal where pilotID='" . $pilotRow['id'] . "'";
+                    $journalResult = $db_connection->query($journalQuery);
 
-                                echo "<tr>";
-                                echo "<td><a href='mission.php?id=" . $missionRow['id'] . "'>" . $missionRow['name'] . "</td>";
-                                echo "<td>" . $missionRow['agent'] . "</td>";
-                                echo "<td>" . $missionRow['reward'] . "</td>";
+                    echo '<table width="100%" class="table table-striped">';
+                    echo '<tr><th>Name</th><th>Agent</th><th>Reward</th><th>Status</th></tr>';
+                    while ($journalRow = mysqli_fetch_array($journalResult)) {
+                        #Setup for each row
+                        $missionQuery = "SELECT * FROM missions WHERE id='" . $journalRow['missionID'] . "'";
+                        $missionRow = mysqli_fetch_array($db_connection->query($missionQuery));
 
-                                switch ($journalRow['state']) {
-                                    case 0:
-                                        echo "<td>" . "Not accepted" . "</td>";
-                                        break;
-                                    case 1:
-                                        echo "<td>" . "Completed" . "</td>";
-                                        break;
-                                    case 2:
-                                        echo "<td>" . "Accepted" . "</td>";
-                                        break;
-                                    case 3:
-                                        echo "<td>" . "In progress" . "</td>";
-                                        break;
-                                    case 4:
-                                        echo "<td>" . "Failed" . "</td>";
-                                        break;
-                                }
+                        echo "<tr>";
+                        echo "<td><a href='mission.php?id=" . $missionRow['id'] . "'>" . $missionRow['name'] . "</td>";
+                        echo "<td>" . $missionRow['agent'] . "</td>";
+                        echo "<td>" . $missionRow['reward'] . "</td>";
+
+                        switch ($journalRow['state']) {
+                            case 0:
+                                echo "<td>" . "Not accepted" . "</td>";
+                                break;
+                            case 1:
+                                echo "<td>" . "Completed" . "</td>";
+                                break;
+                            case 2:
+                                echo "<td>" . "Accepted" . "</td>";
+                                break;
+                            case 3:
+                                echo "<td>" . "In progress" . "</td>";
+                                break;
+                            case 4:
+                                echo "<td>" . "Failed" . "</td>";
+                                break;
+                        }
 
 
-                                echo "</tr>";
-                            }
-                            echo "</table>";
-                            echo "</div>";
-                    ?>
-
-                </div>
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    echo "</div>";
+            ?>
             </div>
         </div>
     </div>
