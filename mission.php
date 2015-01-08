@@ -85,36 +85,44 @@
                 <div>
                     <?php
                     $id_get = $_GET['id'];
-                    $query = "SELECT * FROM missions WHERE ID ='$id_get'";
-                    $result = $db_connection->query($query);
-                        while($row = mysqli_fetch_array($result)) {
-                            echo '<img  style="float:left;padding-right:10px;" src="http://placehold.it/64x64"/>';
+                    $missionQuery = "SELECT * FROM missions WHERE ID ='$id_get'";
+                    $result = $db_connection->query($missionQuery);
+                        while($missionRow = mysqli_fetch_array($result)) {
+                            echo '<img  style="float:left;padding-right:10px;" src="https://placekitten.com/g/64/64"/>';
 
-                            echo "<b>" . $row['agent'] . "</b>";
-                            if ($row['isTrusted'] = true) {
+                            echo "<b>" . $missionRow['agent'] . "</b>";
+                            if ($missionRow['isTrusted'] = true) {
                                 echo "<p style='color:blue;'>Trusted Submitter</p>";
                             } else {
                                 echo "<p>Submitter</p>";
                             }
 
                             echo "</div>";
+                            # Checking tables for more info for the options
+                            $charName =  $_SESSION['auth_charactername'];
+                            $pilotQuery = "SELECT * FROM user where character_name='$charName'";
+                            $pilotRow = mysqli_fetch_array($db_connection->query($pilotQuery));
+                            $journalQuery = "SELECT * FROM Journal WHERE pilotID='" . $pilotRow['id'] . "'";
+
                             echo "<div>
                                 <h4><u>Actions</u></h4>
-                                <a href='/Scripts/acceptMission.php?id=" . $row['id'] . "'>Accept Mission</a>
-                                <p> Complete Mission</p>
-                                <p> Fail Mission</p>
+                                <a href='/Scripts/acceptMission.php?id=" . $missionRow['id'] . "'><p>Accept Mission</p></a>
+                                <a href='/Scripts/completeMission.php?id=" . $missionRow['id'] . "'><p> Complete Mission</p></a>
+                                <a href='/Scripts/failMission.php?id=" . $missionRow['id'] . "'><p> Fail Mission</p></a>
                                 <p> Contact the mission owner</p>
                             </div>";
                             echo "</div>
                             <div class='col-md-8' style=''>
                                 <div>";
-                            $details = clickable($row['bonusDetails']);
-                            echo "<h4>" . $row['name'] . "</h4>";
+                            $details = clickable($missionRow['bonusDetails']);
+
+
+                            echo "<h4>" . $missionRow['name'] . "</h4>";
                             # no field for this in the database echo "<p>Objective:</p>";
-                            echo "<p><b>Reward</b>: " . $row['reward'] . " </p>";
-                            echo "<p><b>Bonus</b>: " . $row['bonusReward'] . " </p>";
-                            echo "<p><b>Mission Details</b>: " . nl2br($row['details']) . "</p>";
-                            echo "<p><b>Task</b>: " . nl2br($row['task']) . "</p>";
+                            echo "<p><b>Reward</b>: " . $missionRow['reward'] . " </p>";
+                            echo "<p><b>Bonus</b>: " . $missionRow['bonusReward'] . " </p>";
+                            echo "<p><b>Mission Details</b>: " . nl2br($missionRow['details']) . "</p>";
+                            echo "<p><b>Task</b>: " . nl2br($missionRow['task']) . "</p>";
                             echo "<p><b>Additional Details</b>: " . nl2br($details) . "</p>";
                         }
                     ?>

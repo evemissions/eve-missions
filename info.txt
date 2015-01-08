@@ -1,6 +1,17 @@
 Journal Table
 0 = not accepted
 1 = completed 
-2 = accepted
-3 = in progress
+2 = in progress
+3 = awaiting completion confirmation
 4 = failed
+
+Tickets Table
+catagory
+1 = mission completion
+2 = mission error
+
+status
+0 = ticket opened
+1 = service responce
+2 = user reply
+3 = closed
