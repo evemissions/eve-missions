@@ -4,7 +4,7 @@ $db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 session_start();
 $pilotQuery = "SELECT * from user WHERE characterid='" . $_SESSION['auth_characterid'] . "'";
 $pilotRow = mysqli_fetch_array($db_connection->query($pilotQuery));
-var_dump($pilotRow['isAdmin']);
+
 
 if ($pilotRow['isAdmin'] == false) {
     header("Location: ../index.php");
@@ -43,25 +43,7 @@ if ($pilotRow['isAdmin'] == false) {
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a>
                     </li>
-                    <li>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Current Missions</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/list.php">All</a>
-                            </li>
-                            <li><a href="#">Top Viewed</a>
-                            </li>
-                            <li><a href="#">Top Rated</a>
-                            </li>
-                            <li><a href="#">Newest</a>
-                            </li>
-                            <li><a href="#">Staff Picks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/submit.php">Submit a Mission</a>
-                    </li>
-                    <li><a href="#about" data-toggle="modal">About</a>
+                    <li><a href="/index.php">Back To Site</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -82,19 +64,30 @@ if ($pilotRow['isAdmin'] == false) {
             </div>
         </div>
     </nav>
-    <div class="container-fluid jumbotron text-center">
-        <h1>eve-missions</h1>
-        <p style="font-family:lato">Player-created missions with ISK rewards</p>
-    </div>
     <div class="container" style="text-align:center">
-        <h5>Welcome to EVE-Missions!</h5>
-        <p>EVE-Missions is a player-made website dedicated to offering beginners of the game EVE Online tasks, or missions, that help them learn more about the opportunities available to them. </p>
-        <h5>What is the purpose of EVE-Missions?</h5>
-        <p><b>Our philosophy</b> is that the fun, immersive things you do in EVE Online tend to make your wallet thinner, and boring things usually make it fatter. This deters new players who get stuck running missions in high sec or mining to earn ISK. There is a common misconception that new players are somehow unable to take part in compelling, emergent content - especially by themselves. By offering missions that pay new players to complete fun, "educational" tasks, they can better understand EVE Online in their early days without relying on mining and trying to earn ISK. New players who have never played a sandbox game tend to lack direction, so by providing them the clear-cut objectives and guidance they've come to expect from other modern games, they can have an easier time adjusting to life in New Eden!</p>
-        <h5>Great, how can I sign up?</h5>
-        <p>Just login through EVE Online's secure system on the top right and start accepting missions!</p>
+        <?php
+            $ticketsQuery = "SELECT * FROM tickets WHERE status='0'";
+            echo "<table class='table table-striped'";
+            echo "<tr><th>Title</th><th>Category</th><th>DateTime opened</th></tr>";
+            $result = $db_connection->query($ticketsQuery);
+            while($ticketsRow = mysqli_fetch_array($result)) {
+                echo "<tr>";
+                echo "<td>"  . $ticketsRow['title'] . "</td>";
+                switch ($ticketsRow['category']) {
+                    case 1:
+                        echo "<td>" . "Mission Completion" . "</td>";
+                        break;
+                    case 2:
+                        echo "<td>"  . "Mission Error" . "</td>";
+                        break;
+                }
+                echo "<td>"  . $ticketsRow['dateOpened'] . "</td>";
+                echo "</tr>";
+
+            }
+            echo "</table>";
+        ?>
     </div>
-    <?php include("modal.php"); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
