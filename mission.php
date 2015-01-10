@@ -91,7 +91,10 @@
                             echo '<img  style="float:left;padding-right:10px;" src="https://placekitten.com/g/64/64"/>';
 
                             echo "<b>" . $missionRow['agent'] . "</b>";
-                            if ($missionRow['isTrusted'] = true) {
+
+                            $agentQuery = "SELECT * FROM user where character_name='" . $missionRow['agent'] . "'";
+                            $agentRow = mysqli_fetch_array($db_connection->query($agentQuery));
+                            if ($agentRow['isTrusted'] = true) {
                                 echo "<p style='color:blue;'>Trusted Submitter</p>";
                             } else {
                                 echo "<p>Submitter</p>";
